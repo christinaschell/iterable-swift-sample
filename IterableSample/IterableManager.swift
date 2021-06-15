@@ -8,8 +8,6 @@
 import SwiftUI
 import IterableSDK
 
-
-
 class IterableManager {
 
     static let shared = IterableManager()
@@ -18,7 +16,7 @@ class IterableManager {
 
     private init() { }
 
-    class func start(with launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+    static public func start(with launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
         IterableAPI.initialize(apiKey: Tokens.apiKey,
                                launchOptions: launchOptions,
                                config: config)
@@ -29,19 +27,8 @@ class IterableManager {
         IterableAPI.updateUser(fields, mergeNestedObjects: true)
     }
     
-    class func track(event name: String, data: [String: Any]? = nil) {
+    class func trackEvent(_ name: String, data: [String: Any]? = nil) {
         IterableAPI.track(event: name, dataFields: data)
-    }
-    
-    class func track(purchase: NSNumber, items: CommerceItems, data: [String: Any]? = nil) {
-        guard let items = items as? [CommerceItem] else {
-            return
-        }
-        IterableAPI.track(purchase: purchase, items: items, dataFields: data)
-    }
-    
-    class func track(pushOpen info: [String: Any]) {
-        IterableAPI.track(pushOpen: info)
     }
     
     class func didReceiveRemoteNotification(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -49,3 +36,4 @@ class IterableManager {
     }
 
 }
+
