@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF4C04132679980B00E45137 /* MobileInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C04122679980B00E45137 /* MobileInbox.swift */; };
+		CF4C041526799B6700E45137 /* CommerceItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C041426799B6700E45137 /* CommerceItems.swift */; };
 		CFD3A4A0264B628100CEC47D /* IterableSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3A49F264B628100CEC47D /* IterableSampleApp.swift */; };
 		CFD3A4A2264B628100CEC47D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3A4A1264B628100CEC47D /* ContentView.swift */; };
 		CFD3A4A4264B628500CEC47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFD3A4A3264B628500CEC47D /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		CF4C041126784DAB00E45137 /* IterableSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IterableSample.entitlements; sourceTree = "<group>"; };
 		CF4C04122679980B00E45137 /* MobileInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileInbox.swift; sourceTree = "<group>"; };
+		CF4C041426799B6700E45137 /* CommerceItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceItems.swift; sourceTree = "<group>"; };
 		CFD3A49C264B628100CEC47D /* IterableSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IterableSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD3A49F264B628100CEC47D /* IterableSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterableSampleApp.swift; sourceTree = "<group>"; };
 		CFD3A4A1264B628100CEC47D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF4C041626799BC200E45137 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFD3A4A1264B628100CEC47D /* ContentView.swift */,
+				CFD3A4C1264B70DA00CEC47D /* AccountView.swift */,
+				CF4C04122679980B00E45137 /* MobileInbox.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF4C041726799BCD00E45137 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF4C041426799B6700E45137 /* CommerceItems.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CFD3A493264B628100CEC47D = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +89,8 @@
 				CFD3A4BF264B6E0100CEC47D /* Tokens.swift */,
 				CFD3A4BA264B6BA700CEC47D /* IterableManager.swift */,
 				CFD3A49F264B628100CEC47D /* IterableSampleApp.swift */,
-				CFD3A4A1264B628100CEC47D /* ContentView.swift */,
-				CFD3A4C1264B70DA00CEC47D /* AccountView.swift */,
-				CF4C04122679980B00E45137 /* MobileInbox.swift */,
+				CF4C041626799BC200E45137 /* Views */,
+				CF4C041726799BCD00E45137 /* Models */,
 				CFD3A4A3264B628500CEC47D /* Assets.xcassets */,
 				CFD3A4A8264B628500CEC47D /* Info.plist */,
 				CFD3A4A5264B628500CEC47D /* Preview Content */,
@@ -167,6 +186,7 @@
 				CF4C04132679980B00E45137 /* MobileInbox.swift in Sources */,
 				CFD3A4A2264B628100CEC47D /* ContentView.swift in Sources */,
 				CFD3A4BB264B6BA700CEC47D /* IterableManager.swift in Sources */,
+				CF4C041526799B6700E45137 /* CommerceItems.swift in Sources */,
 				CFD3A4A0264B628100CEC47D /* IterableSampleApp.swift in Sources */,
 				CFD3A4C0264B6E0100CEC47D /* Tokens.swift in Sources */,
 				CFD3A4C2264B70DA00CEC47D /* AccountView.swift in Sources */,
