@@ -20,18 +20,28 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Image("iterable")
-            SchellyTextField($user.username, secure: false, imageName: "person.fill", placeholder: "Username", color: .darkPurple)
+            SchellyTextField($user.username,
+                             secure: false,
+                             imageName: "person.fill",
+                             placeholder: "Username",
+                             color: .darkPurple)
                 .padding(.top, 20)
-            SchellyTextField($user.password, secure: true, imageName: "lock.fill", placeholder: "Password", color: .darkPurple)
+            SchellyTextField($user.password,
+                             secure: true,
+                             imageName: "lock.fill",
+                             placeholder: "Password",
+                             color: .darkPurple)
                 .padding(.bottom, 20)
-            SchellyTextButton(title: "Login", backgroundColor: .darkPurple, foregroundColor: .white) {
+            SchellyTextButton(title: "Login",
+                              backgroundColor: .darkPurple,
+                              foregroundColor: .white) {
                 IterableManager.updateUser(with: [
-                    "firstName": "Christina",
-                    "isRegisteredUser": true,
-                    "SA_User_Test_Key": "completed"
+                    "customer_first_name": "Christina",
+                    "is_registered_user": true
                 ])
                 self.showAccountModal.toggle()
-            }.sheet(isPresented: $showAccountModal, content: {
+            }
+            .sheet(isPresented: $showAccountModal, content: {
                 AccountView()
             })
 

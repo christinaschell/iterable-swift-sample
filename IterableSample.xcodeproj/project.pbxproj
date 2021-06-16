@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF4C04132679980B00E45137 /* MobileInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C04122679980B00E45137 /* MobileInbox.swift */; };
+		CF4C04132679980B00E45137 /* MobileInboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C04122679980B00E45137 /* MobileInboxView.swift */; };
 		CF4C041526799B6700E45137 /* CommerceItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C041426799B6700E45137 /* CommerceItems.swift */; };
 		CFD3A4A0264B628100CEC47D /* IterableSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3A49F264B628100CEC47D /* IterableSampleApp.swift */; };
 		CFD3A4A2264B628100CEC47D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3A4A1264B628100CEC47D /* ContentView.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		CF4C041126784DAB00E45137 /* IterableSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IterableSample.entitlements; sourceTree = "<group>"; };
-		CF4C04122679980B00E45137 /* MobileInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileInbox.swift; sourceTree = "<group>"; };
+		CF4C04122679980B00E45137 /* MobileInboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileInboxView.swift; sourceTree = "<group>"; };
 		CF4C041426799B6700E45137 /* CommerceItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceItems.swift; sourceTree = "<group>"; };
 		CFD3A49C264B628100CEC47D /* IterableSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IterableSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD3A49F264B628100CEC47D /* IterableSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterableSampleApp.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			children = (
 				CFD3A4A1264B628100CEC47D /* ContentView.swift */,
 				CFD3A4C1264B70DA00CEC47D /* AccountView.swift */,
-				CF4C04122679980B00E45137 /* MobileInbox.swift */,
+				CF4C04122679980B00E45137 /* MobileInboxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4C04132679980B00E45137 /* MobileInbox.swift in Sources */,
+				CF4C04132679980B00E45137 /* MobileInboxView.swift in Sources */,
 				CFD3A4A2264B628100CEC47D /* ContentView.swift in Sources */,
 				CFD3A4BB264B6BA700CEC47D /* IterableManager.swift in Sources */,
 				CF4C041526799B6700E45137 /* CommerceItems.swift in Sources */,
