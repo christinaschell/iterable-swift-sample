@@ -21,6 +21,7 @@ struct IterableSampleApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         IterableManager.start(with: launchOptions)
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -32,5 +33,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
            let url = userActivity.webpageURL {
             return IterableManager.didReceiveDeeplink(with: url)
         }
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    public func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .badge, .sound])
+    }
+
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        IterableManager.shared.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
     }
 }

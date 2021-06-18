@@ -6,7 +6,12 @@
 //
 
 import SwiftUI
+import UserNotifications
 import IterableSDK
+
+public protocol IterableNotifier {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+}
 
 class IterableManager {
 
@@ -52,6 +57,12 @@ class IterableManager {
 
 }
 
+extension IterableManager: IterableNotifier {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        IterableAppIntegration.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+    }
+}
+
 // https://support.iterable.com/hc/en-us/articles/360035536791-In-App-Messages-on-iOS-
 // TODO: Set up custom URL and Action delegates
 class CustomIterableAppDelegate: IterableInAppDelegate {
@@ -64,4 +75,5 @@ class CustomIterableAppDelegate: IterableInAppDelegate {
         return .show
     }
 }
+
 

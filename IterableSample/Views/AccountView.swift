@@ -18,18 +18,18 @@ struct AccountView: View {
             SchellyTextButton(title: "Send Custom Event",
                               backgroundColor: .lightGreen,
                               foregroundColor: .white) {
-                IterableManager.track(event: "Custom Event 1", data: [
+                IterableManager.track(event: "iOS Custom Event", data: [
                     "platform": "iOS",
                     "custom_key": true
                 ])
             }
-            SchellyTextButton(title: "Product View",
+            SchellyTextButton(title: "Product List View",
                               backgroundColor: .lightBlue,
                               foregroundColor: .white) {
                  IterableManager.track(event: "Product View", data: [
-                     "item_id": CommerceItems.productView.map(\.id),
-                     "item_name": CommerceItems.productView.map(\.name),
-                     "item_price": CommerceItems.productView.map(\.price)
+                     "item_id": CommerceItems.listView.map(\.id),
+                     "item_name": CommerceItems.listView.map(\.name),
+                     "item_price": CommerceItems.listView.map(\.price)
                  ])
              }
              SchellyTextButton(title: "Add To Cart",
@@ -44,17 +44,29 @@ struct AccountView: View {
                      ])
                  }
              }
+            SchellyTextButton(title: "Remove From Cart",
+                              backgroundColor: .darkPurple,
+                              foregroundColor: .white) {
+                CommerceItems.removeFromCart.forEach {
+                    IterableManager.track(event: "Remove From Cart", data: [
+                        "item_id": $0.id,
+                        "item_name": $0.name,
+                        "item_price": $0.price,
+                        "item_quantity": $0.quantity,
+                    ])
+                }
+            }
              SchellyTextButton(title: "Track Purchase",
-                               backgroundColor: .darkPurple,
+                               backgroundColor: .lightGreen,
                                foregroundColor: .white) {
-                 IterableManager.track(purchase: 20.96, items: CommerceItems.productView, data: [
+                IterableManager.track(purchase: 8.98, items: CommerceItems.purchase, data: [
                      "is_rewards_member": true,
                      "rewards_available": 11200,
                      "order_discount_code": "Summer2021"
                  ])
              }
             SchellyTextButton(title: "Mobile Inbox",
-                              backgroundColor: .lightGreen,
+                              backgroundColor: .lightBlue,
                               foregroundColor: .white) {
                 self.mobileInboxPresented.toggle()
             }

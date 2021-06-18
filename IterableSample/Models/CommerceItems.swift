@@ -19,7 +19,7 @@ public typealias CommerceItems = [CommerceItemTrackable]
 
 public extension CommerceItems {
     
-    static let productView = [CommerceItem(id: "item1", name: "Item 1", price: 2.99, quantity: 1),
+    static let listView = [CommerceItem(id: "item1", name: "Item 1", price: 2.99, quantity: 1),
                               CommerceItem(id: "item2", name: "Item 2", price: 5.99, quantity: 1),
                               CommerceItem(id: "item3", name: "Item 3", price: 8.99, quantity: 1),
                               CommerceItem(id: "item4", name: "Item 4", price: 1.99, quantity: 1),
@@ -31,9 +31,10 @@ public extension CommerceItems {
                            CommerceItem(id: "item2", name: "Item 2", price: 5.99, quantity: 1),
                            CommerceItem(id: "item3", name: "Item 3", price: 8.99, quantity: 1)]
     
+    static let removeFromCart = [CommerceItem(id: "item3", name: "Item 3", price: 8.99, quantity: 1)]
+    
     static let purchase = [CommerceItem(id: "item1", name: "Item 1", price: 2.99, quantity: 2),
-                           CommerceItem(id: "item2", name: "Item 2", price: 5.99, quantity: 1),
-                           CommerceItem(id: "item3", name: "Item 3", price: 8.99, quantity: 1)]
+                           CommerceItem(id: "item2", name: "Item 2", price: 5.99, quantity: 1)]
 }
 
 extension CommerceItem: CommerceItemTrackable { }
