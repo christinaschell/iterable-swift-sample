@@ -26,38 +26,26 @@ struct AccountView: View {
             SchellyTextButton(title: "Product List View",
                               backgroundColor: .lightBlue,
                               foregroundColor: .white) {
-                 IterableManager.track(event: "Product View", data: [
-                     "item_id": CommerceItems.listView.map(\.id),
-                     "item_name": CommerceItems.listView.map(\.name),
-                     "item_price": CommerceItems.listView.map(\.price)
+                 IterableManager.track(event: "Product List View", data: [
+                     "productImpressions": CommerceItems.listView
                  ])
              }
              SchellyTextButton(title: "Add To Cart",
                                backgroundColor: .lightRed,
                                foregroundColor: .white) {
-                 CommerceItems.addToCart.forEach {
-                     IterableManager.track(event: "Add To Cart", data: [
-                         "item_id": $0.id,
-                         "item_name": $0.name,
-                         "item_price": $0.price,
-                         "item_quantity": $0.quantity,
-                     ])
-                 }
+                 IterableManager.track(event: "Add To Cart", data: [
+                     "shoppingCartItems": CommerceItems.addToCart
+                 ])
              }
             SchellyTextButton(title: "Remove From Cart",
                               backgroundColor: .darkPurple,
                               foregroundColor: .white) {
-                CommerceItems.removeFromCart.forEach {
-                    IterableManager.track(event: "Remove From Cart", data: [
-                        "item_id": $0.id,
-                        "item_name": $0.name,
-                        "item_price": $0.price,
-                        "item_quantity": $0.quantity,
-                    ])
-                }
+                IterableManager.track(event: "Remove From Cart", data: [
+                    "shoppingCartItems": CommerceItems.removeFromCart
+                ])
             }
              SchellyTextButton(title: "Track Purchase",
-                               backgroundColor: .lightGreen,
+                               backgroundColor: .lightPurple,
                                foregroundColor: .white) {
                 IterableManager.track(purchase: 8.98, items: CommerceItems.purchase, data: [
                      "is_rewards_member": true,
@@ -66,7 +54,7 @@ struct AccountView: View {
                  ])
              }
             SchellyTextButton(title: "Mobile Inbox",
-                              backgroundColor: .lightBlue,
+                              backgroundColor: .lightGreen,
                               foregroundColor: .white) {
                 self.mobileInboxPresented.toggle()
             }
@@ -81,4 +69,8 @@ struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView()
     }
+}
+
+public extension Color {
+    static let lightPurple = Color(red: 0.764, green: 0.615, blue: 0.796)
 }
