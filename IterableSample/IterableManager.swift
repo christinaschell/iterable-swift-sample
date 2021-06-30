@@ -25,7 +25,12 @@ class IterableManager {
         IterableAPI.initialize(apiKey: Tokens.apiKey,
                                launchOptions: launchOptions,
                                config: config)
-        IterableAPI.email = Tokens.email
+//          { success in
+//            guard success else {
+//                return
+//            }
+            IterableAPI.email = Tokens.email
+//        }
     }
     
     class func updateUser(with fields: [String: Any]) {
@@ -45,6 +50,10 @@ class IterableManager {
     
     class func track(pushOpen info: [String: Any]) {
         IterableAPI.track(pushOpen: info)
+    }
+    
+    class func register(token: Data) {
+        IterableAPI.register(token: token)
     }
     
     class func didReceiveRemoteNotification(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

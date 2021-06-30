@@ -27,21 +27,21 @@ struct AccountView: View {
                               backgroundColor: .lightBlue,
                               foregroundColor: .white) {
                  IterableManager.track(event: "Product List View", data: [
-                     "productImpressions": CommerceItems.listView
+                     "productImpressions": Items.listView
                  ])
              }
              SchellyTextButton(title: "Add To Cart",
                                backgroundColor: .lightRed,
                                foregroundColor: .white) {
                  IterableManager.track(event: "Add To Cart", data: [
-                     "shoppingCartItems": CommerceItems.addToCart
+                     "items": Items.addToCart
                  ])
              }
             SchellyTextButton(title: "Remove From Cart",
                               backgroundColor: .darkPurple,
                               foregroundColor: .white) {
                 IterableManager.track(event: "Remove From Cart", data: [
-                    "shoppingCartItems": CommerceItems.removeFromCart
+                    "items": Items.removeFromCart
                 ])
             }
              SchellyTextButton(title: "Track Purchase",
