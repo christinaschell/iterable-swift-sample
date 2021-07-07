@@ -9,18 +9,45 @@ import SwiftUI
 
 @main
 struct IterableSampleApp: App {
+    @State private var activeTab = TabIdentifier.home
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView(selection: $activeTab) {
+                HomeView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "house.fill")
+                            Text("Home")
+                        }
+                    }
+                    .tag(TabIdentifier.home)
+                EventsView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "dot.radiowaves.left.and.right")
+                            Text("Events")
+                        }
+                    }
+                    .tag(TabIdentifier.events)
+            }
+            .accentColor(.darkPurple)
+            .onOpenURL { url in
+                guard let tabId = url.tabIdentifier else {
+                    return
+                }
+                activeTab = tabId
+                // handle universal link
+                IterableManager.didReceiveUniversalLink(with: url)
+            }
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        IterableManager.start(with: launchOptions)
+        IterableManager.shared.start(with: launchOptions)
         setupNotifications()
         return true
     }
@@ -33,13 +60,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         IterableManager.didReceiveRemoteNotification(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
-    }
-    
-    func application(_ application: UIApplication, didUpdate userActivity: NSUserActivity) {
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-           let url = userActivity.webpageURL {
-            return IterableManager.didReceiveDeeplink(with: url)
-        }
     }
     
     private func setupNotifications() {
@@ -71,6 +91,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        IterableManager.shared.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+        IterableManager.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
     }
 }

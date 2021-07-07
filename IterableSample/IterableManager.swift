@@ -8,29 +8,25 @@
 import SwiftUI
 import UserNotifications
 import IterableSDK
+import Combine
 
 public protocol IterableNotifier {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+    static func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
 }
 
 class IterableManager {
 
     static let shared = IterableManager()
 
-    static let config = IterableConfig()
+    let config = IterableConfig()
 
     private init() { }
 
-    class func start(with launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+    func start(with launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
         IterableAPI.initialize(apiKey: Tokens.apiKey,
                                launchOptions: launchOptions,
                                config: config)
-//          { success in
-//            guard success else {
-//                return
-//            }
-            IterableAPI.email = Tokens.email
-//        }
+        IterableAPI.email = Tokens.email
     }
     
     class func updateUser(with fields: [String: Any]) {
@@ -60,14 +56,14 @@ class IterableManager {
         IterableAppIntegration.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
     }
     
-    class func didReceiveDeeplink(with url: URL) {
+    class func didReceiveUniversalLink(with url: URL) {
         IterableAPI.handle(universalLink: url)
     }
 
 }
 
 extension IterableManager: IterableNotifier {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    class func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         IterableAppIntegration.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
     }
 }
@@ -84,5 +80,3 @@ class CustomIterableAppDelegate: IterableInAppDelegate {
         return .show
     }
 }
-
-

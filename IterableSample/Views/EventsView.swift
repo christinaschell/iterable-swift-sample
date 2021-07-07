@@ -1,5 +1,5 @@
 //
-//  AccountView.swift
+//  EventsView.swift
 //  IterableSample
 //
 //  Created by Christina Schell on 5/11/21.
@@ -8,8 +8,7 @@
 import SwiftUI
 import SchellySwiftUI
 
-struct AccountView: View {
-    @State private var mobileInboxPresented = false
+struct EventsView: View {
     
     var body: some View {
         VStack {
@@ -53,24 +52,12 @@ struct AccountView: View {
                      "order_discount_code": "Summer2021"
                  ])
              }
-            SchellyTextButton(title: "Mobile Inbox",
-                              backgroundColor: .lightGreen,
-                              foregroundColor: .white) {
-                self.mobileInboxPresented.toggle()
-            }
-            .sheet(isPresented: $mobileInboxPresented) {
-                MobileInboxView()
-            }
         }
     }
 }
 
-struct AccountView_Previews: PreviewProvider {
+struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        EventsView()
     }
-}
-
-public extension Color {
-    static let lightPurple = Color(red: 0.764, green: 0.615, blue: 0.796)
 }
