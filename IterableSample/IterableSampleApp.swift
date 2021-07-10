@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct IterableSampleApp: App {
-    @State private var activeTab = TabIdentifier.home
+    @StateObject var appState = AppState()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
-            TabView(selection: $activeTab) {
+            TabView(selection: $appState.selectedTab) {
                 HomeView()
                     .tabItem {
                         VStack {
@@ -22,6 +22,7 @@ struct IterableSampleApp: App {
                             Text("Home")
                         }
                     }
+                    .environmentObject(appState)
                     .tag(TabIdentifier.home)
                 EventsView()
                     .tabItem {
@@ -30,15 +31,31 @@ struct IterableSampleApp: App {
                             Text("Events")
                         }
                     }
+                    .environmentObject(appState)
                     .tag(TabIdentifier.events)
+                DonutListView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "cart.fill")
+                            Text("Shop")
+                        }
+                    }
+                    .environmentObject(appState)
+                    .tag(TabIdentifier.products)
+                MobileInboxView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "envelope.fill")
+                            Text("Messages")
+                        }
+                    }
+                    .tag(TabIdentifier.inbox)
             }
             .accentColor(.darkPurple)
             .onOpenURL { url in
-                guard let tabId = url.tabIdentifier else {
-                    return
-                }
-                activeTab = tabId
-                // handle universal link
+                let state = Deeplinker().handle(url)
+                appState.selectedTab = state.tab
+                appState.selectedDonut = state.donut
                 IterableManager.didReceiveUniversalLink(with: url)
             }
         }

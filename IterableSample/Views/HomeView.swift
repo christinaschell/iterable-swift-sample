@@ -35,6 +35,8 @@ struct HomeView: View {
                     "customer_first_name": user.firstName,
                     "is_registered_user": true
                 ])
+            }.onAppear {
+                Deeplinker().manage(url: URL(string: "https://schellyapps.com/products?q=maplebar")!)
             }
         }
     }

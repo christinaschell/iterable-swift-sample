@@ -7,23 +7,9 @@
 
 import Foundation
 
-enum TabIdentifier: Hashable {
-  case home, events
+public extension URL {
+    static let appScheme = "iterablesampleios"
+    static let appHost = "schellyapps.com"
+    static let appHomeUrl = "\(Self.appScheme)://\(Self.appHost)"
+    static let appDetailsPath = "products"
 }
-
-extension URL {
-  var isDeeplink: Bool {
-    return scheme?.lowercased() == "iterablesampleios" || self.absoluteString.contains("schellyapps.com")
-  }
-
-  var tabIdentifier: TabIdentifier? {
-    guard isDeeplink else { return nil }
-    switch true {
-    case self.absoluteString.contains("events"): return .events
-    default: return .home
-    }
-  }
-    
-}
-
-

@@ -37,15 +37,13 @@ class IterableManager {
         IterableAPI.track(event: name, dataFields: data)
     }
     
+    // TODO: update cart
+    
     class func track(purchase: NSNumber, items: CommerceItems, data: [String: Any]? = nil) {
         guard let items = items as? [CommerceItem] else {
             return
         }
         IterableAPI.track(purchase: purchase, items: items, dataFields: data)
-    }
-    
-    class func track(pushOpen info: [String: Any]) {
-        IterableAPI.track(pushOpen: info)
     }
     
     class func register(token: Data) {
@@ -68,8 +66,6 @@ extension IterableManager: IterableNotifier {
     }
 }
 
-// https://support.iterable.com/hc/en-us/articles/360035536791-In-App-Messages-on-iOS-
-// TODO: Set up custom URL and Action delegates
 class CustomIterableAppDelegate: IterableInAppDelegate {
     
     // Overriding default behavior for certain messages
@@ -78,5 +74,27 @@ class CustomIterableAppDelegate: IterableInAppDelegate {
             return .skip
         }
         return .show
+    }
+}
+
+// TODO: Manage State
+class CustomInAppAction: IterableCustomActionDelegate {
+    func handle(iterableCustomAction action: IterableAction, inContext context: IterableActionContext) -> Bool {
+        return true
+    }
+}
+
+class CustomInAppUrl: IterableURLDelegate {
+  // TODO: to get universal/deep links working from an inapp message
+//    let selectedTab = PassthroughSubject<TabIdentifier, Never>()
+//    let selectedDonut = PassthroughSubject<Int, Never>()
+//
+    func handle(iterableURL url: URL, inContext context: IterableActionContext) -> Bool {
+//        let state = Deeplinker().handle(url)
+//        selectedTab.send(state.tab)
+//        if let donut = state.donut {
+//            selectedDonut.send(donut)
+//        }
+        return true
     }
 }
