@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/iterable/swift-sdk",
         "state": {
           "branch": null,
-          "revision": "ee0eb49d5fe57d747025de8d49c88e743ffc2390",
-          "version": "6.2.22"
+          "revision": "20b3ca07582ec3f1c892eb2e37cf61bae56c337d",
+          "version": "6.3.1"
         }
       }
     ]

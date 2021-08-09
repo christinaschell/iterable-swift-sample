@@ -19,22 +19,45 @@ class IterableManager {
     static let shared = IterableManager()
 
     let config = IterableConfig()
+    
+    static let customLogger = CustomLogger()
+    
+    var userEmail: String {
+        get {
+            IterableAPI.email ?? ""
+        }
+        set {
+            IterableAPI.email = newValue
+        }
+    }
+    
+    var userId: String {
+        get {
+            IterableAPI.userId ?? ""
+        }
+        set {
+            IterableAPI.email = newValue
+        }
+    }
 
     private init() { }
 
     func start(with launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) {
+        config.logDelegate = IterableManager.customLogger
         IterableAPI.initialize(apiKey: Tokens.apiKey,
                                launchOptions: launchOptions,
                                config: config)
-        IterableAPI.email = Tokens.email
+        IterableAPI.email = userEmail
     }
     
     class func updateUser(with fields: [String: Any]) {
         IterableAPI.updateUser(fields, mergeNestedObjects: true)
+        log(event: "updateUser", payload: fields)
     }
     
     class func track(event name: String, data: [String: Any]? = nil) {
         IterableAPI.track(event: name, dataFields: data)
+        log(event: name, payload: data ?? [String: Any]())
     }
     
     // TODO: update cart
@@ -44,6 +67,7 @@ class IterableManager {
             return
         }
         IterableAPI.track(purchase: purchase, items: items, dataFields: data)
+        log(event: "purchase", payload: data ?? [String: Any]())
     }
     
     class func register(token: Data) {
@@ -56,6 +80,11 @@ class IterableManager {
     
     class func didReceiveUniversalLink(with url: URL) {
         IterableAPI.handle(universalLink: url)
+    }
+    
+    private class func log(event name: String, payload: [String: Any], message: String? = nil) {
+        let message = CustomLogger.add(event: name, and: payload)
+        customLogger.log(level: .info, message: message)
     }
 
 }
@@ -96,5 +125,36 @@ class CustomInAppUrl: IterableURLDelegate {
 //            selectedDonut.send(donut)
 //        }
         return true
+    }
+}
+
+class CustomLogger: IterableLogDelegate {
+    func log(level: LogLevel, message: String) {
+        // Should probably make `os_log` instead of `print`
+        print(markedMessage(level: level, message: message))
+    }
+    
+    static func add(event name: String, and payload: [String: Any], to message: String? = nil) -> String {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: []),
+              let jsonString = String(data: jsonData, encoding: String.Encoding.ascii) else {
+            return message ?? ""
+        }
+        return "\(message ?? "")\n===========================\neventName: \(name)\npaylaod: \(jsonString)"
+    }
+    
+    func markedMessage(level: LogLevel, message: String) -> String {
+        let markerStr = marker(forLevel: level)
+        return "\(markerStr) \(message)"
+    }
+    
+    func marker(forLevel level: LogLevel) -> String {
+        switch level {
+        case .error:
+            return "CustomLogger 🛑"
+        case .info:
+            return "CustomLogger ℹ️"
+        case .debug:
+            return "CustomLogger 🐛"
+        }
     }
 }

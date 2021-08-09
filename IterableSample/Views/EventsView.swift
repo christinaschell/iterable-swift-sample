@@ -32,15 +32,17 @@ struct EventsView: View {
              SchellyTextButton(title: "Add To Cart",
                                backgroundColor: .lightRed,
                                foregroundColor: .white) {
+                IterableManager.updateUser(with: ["shoppingCartItems": Items.addToCart])
                  IterableManager.track(event: "Add To Cart", data: [
-                     "items": Items.addToCart
+                     "updatedShoppingCartItems": Items.addToCart
                  ])
              }
             SchellyTextButton(title: "Remove From Cart",
                               backgroundColor: .darkPurple,
                               foregroundColor: .white) {
+                IterableManager.updateUser(with: ["shoppingCartItems": Items.removeFromCart])
                 IterableManager.track(event: "Remove From Cart", data: [
-                    "items": Items.removeFromCart
+                    "updatedShoppingCartItems": Items.removeFromCart
                 ])
             }
              SchellyTextButton(title: "Track Purchase",

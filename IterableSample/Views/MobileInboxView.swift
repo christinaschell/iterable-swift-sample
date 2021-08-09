@@ -18,8 +18,8 @@ struct MobileInboxView: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         uiViewController.navTitle = "Inbox"
-        uiViewController.noMessagesTitle = "No saved messages"
-        uiViewController.noMessagesBody = "Check again later!"
+        //uiViewController.noMessagesTitle = "No saved messages"
+        //uiViewController.noMessagesBody = "Check again later!"
     }
     
 }

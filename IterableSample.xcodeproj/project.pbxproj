@@ -603,7 +603,7 @@
 			repositoryURL = "https://github.com/iterable/swift-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.22;
+				minimumVersion = 6.3.1;
 			};
 		};
 		CFD3A4C5264B75B100CEC47D /* XCRemoteSwiftPackageReference "SchellySwiftUI" */ = {

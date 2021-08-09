@@ -24,7 +24,7 @@ class Deeplinker {
         case inbox
     }
     
-    private func manage(url: URL) -> Deeplink? {
+    func manage(url: URL) -> Deeplink? {
         switch true {
         case url.absoluteString.contains("mobileinbox"): return .inbox
         case url.absoluteString.contains("events"): return .events

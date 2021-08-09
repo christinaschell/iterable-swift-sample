@@ -53,6 +53,7 @@ struct IterableSampleApp: App {
             }
             .accentColor(.darkPurple)
             .onOpenURL { url in
+                print("url: \(url)")
                 let state = Deeplinker().handle(url)
                 appState.selectedTab = state.tab
                 appState.selectedDonut = state.donut
@@ -65,7 +66,8 @@ struct IterableSampleApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         IterableManager.shared.start(with: launchOptions)
-        setupNotifications()
+        UNUserNotificationCenter.current().delegate = self
+        //setupNotifications()
         return true
     }
     
@@ -79,27 +81,27 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         IterableManager.didReceiveRemoteNotification(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
     }
     
-    private func setupNotifications() {
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            if settings.authorizationStatus != .authorized {
-                // not authorized, ask for permission
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
-                    if success {
-                        DispatchQueue.main.async {
-                            UIApplication.shared.registerForRemoteNotifications()
-                        }
-                    }
-                    // TODO: Handle error etc.
-                }
-            } else {
-                // already authorized
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            }
-        }
-    }
+//    private func setupNotifications() {
+//        UNUserNotificationCenter.current().delegate = self
+//        UNUserNotificationCenter.current().getNotificationSettings { settings in
+//            if settings.authorizationStatus != .authorized {
+//                // not authorized, ask for permission
+//                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, _ in
+//                    if success {
+//                        DispatchQueue.main.async {
+//                            UIApplication.shared.registerForRemoteNotifications()
+//                        }
+//                    }
+//                    // TODO: Handle error etc.
+//                }
+//            } else {
+//                // already authorized
+//                DispatchQueue.main.async {
+//                    UIApplication.shared.registerForRemoteNotifications()
+//                }
+//            }
+//        }
+//    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
