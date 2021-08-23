@@ -14,6 +14,9 @@
 		871182272698BF3E003B51DA /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871182262698BF3E003B51DA /* Bundle+Decode.swift */; };
 		871182292698C069003B51DA /* DonutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871182282698C069003B51DA /* DonutDetailView.swift */; };
 		8711822C2698CEA3003B51DA /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8711822B2698CEA3003B51DA /* CircleImageView.swift */; };
+		8718BC7726C9CF4C00911554 /* CustomInboxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718BC7626C9CF4B00911554 /* CustomInboxCellView.swift */; };
+		8718BC7A26C9D0EA00911554 /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 8718BC7926C9D0EA00911554 /* messages.json */; };
+		8718BC7C26C9D1A500911554 /* InAppMessageStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718BC7B26C9D1A500911554 /* InAppMessageStub.swift */; };
 		875F7CE2268BE2E80034357A /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875F7CE1268BE2E80034357A /* Encodable+Dictionary.swift */; };
 		875F7CEB268D60BE0034357A /* URL+UniversalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875F7CEA268D60BE0034357A /* URL+UniversalLink.swift */; };
 		875F7CF3268E74AA0034357A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875F7CF2268E74AA0034357A /* NotificationService.swift */; };
@@ -65,6 +68,9 @@
 		871182262698BF3E003B51DA /* Bundle+Decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		871182282698C069003B51DA /* DonutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutDetailView.swift; sourceTree = "<group>"; };
 		8711822B2698CEA3003B51DA /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		8718BC7626C9CF4B00911554 /* CustomInboxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInboxCellView.swift; sourceTree = "<group>"; };
+		8718BC7926C9D0EA00911554 /* messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		8718BC7B26C9D1A500911554 /* InAppMessageStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMessageStub.swift; sourceTree = "<group>"; };
 		875F7CE1268BE2E80034357A /* Encodable+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Dictionary.swift"; sourceTree = "<group>"; };
 		875F7CEA268D60BE0034357A /* URL+UniversalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UniversalLink.swift"; sourceTree = "<group>"; };
 		875F7CF0268E74AA0034357A /* IterableSampleNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IterableSampleNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +120,16 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		8718BC7826C9CF5400911554 /* MobileInbox */ = {
+			isa = PBXGroup;
+			children = (
+				CF4C04122679980B00E45137 /* MobileInboxView.swift */,
+				8718BC7626C9CF4B00911554 /* CustomInboxCellView.swift */,
+				8718BC7926C9D0EA00911554 /* messages.json */,
+			);
+			path = MobileInbox;
+			sourceTree = "<group>";
+		};
 		875F7CE0268BE2D20034357A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,10 +160,10 @@
 		CF4C041626799BC200E45137 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8718BC7826C9CF5400911554 /* MobileInbox */,
 				8711822A2698CE83003B51DA /* Supporting */,
 				CFD3A4A1264B628100CEC47D /* HomeView.swift */,
 				CFD3A4C1264B70DA00CEC47D /* EventsView.swift */,
-				CF4C04122679980B00E45137 /* MobileInboxView.swift */,
 				8711821C2698B547003B51DA /* DonutListView.swift */,
 				871182282698C069003B51DA /* DonutDetailView.swift */,
 			);
@@ -160,6 +176,7 @@
 				871182222698BF14003B51DA /* Donut.swift */,
 				871182232698BF15003B51DA /* donuts.json */,
 				CF4C041426799B6700E45137 /* CommerceItems.swift */,
+				8718BC7B26C9D1A500911554 /* InAppMessageStub.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +327,7 @@
 				871182252698BF15003B51DA /* donuts.json in Resources */,
 				CFD3A4A7264B628500CEC47D /* Preview Assets.xcassets in Resources */,
 				CFD3A4A4264B628500CEC47D /* Assets.xcassets in Resources */,
+				8718BC7A26C9D0EA00911554 /* messages.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +348,7 @@
 			files = (
 				871182242698BF15003B51DA /* Donut.swift in Sources */,
 				CF4C04132679980B00E45137 /* MobileInboxView.swift in Sources */,
+				8718BC7C26C9D1A500911554 /* InAppMessageStub.swift in Sources */,
 				CFD3A4A2264B628100CEC47D /* HomeView.swift in Sources */,
 				CFD3A4BB264B6BA700CEC47D /* IterableManager.swift in Sources */,
 				875F7CE2268BE2E80034357A /* Encodable+Dictionary.swift in Sources */,
@@ -338,6 +357,7 @@
 				CFD3A4A0264B628100CEC47D /* IterableSampleApp.swift in Sources */,
 				CFD3A4C2264B70DA00CEC47D /* EventsView.swift in Sources */,
 				8799B0D32687CD900094B98A /* Tokens.swift in Sources */,
+				8718BC7726C9CF4C00911554 /* CustomInboxCellView.swift in Sources */,
 				8711821F2698B60E003B51DA /* Deeplinker.swift in Sources */,
 				871182272698BF3E003B51DA /* Bundle+Decode.swift in Sources */,
 				871182292698C069003B51DA /* DonutDetailView.swift in Sources */,

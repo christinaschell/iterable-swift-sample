@@ -12,6 +12,8 @@ import IterableSDK
 // TODO: https://support.iterable.com/hc/en-us/articles/360039091471
 struct MobileInboxView: UIViewControllerRepresentable {
     
+    let messages = InAppMessageStubs()
+    
     func makeUIViewController(context: Context) -> some IterableInboxNavigationViewController {
         return IterableInboxNavigationViewController()
     }

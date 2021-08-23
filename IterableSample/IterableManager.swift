@@ -26,11 +26,16 @@ class IterableManager {
         IterableAPI.initialize(apiKey: Tokens.apiKey,
                                launchOptions: launchOptions,
                                config: config)
+        
+        
         IterableAPI.email = Tokens.email
+//        IterableManager.updateUser(with: ["userId": "YOUR_USER_ID", "InstallationId": ".."])
     }
     
     class func updateUser(with fields: [String: Any]) {
-        IterableAPI.updateUser(fields, mergeNestedObjects: true)
+        IterableAPI.updateUser(fields, mergeNestedObjects: true) { _ in
+            print("Iterable User ID: \(String(describing: IterableAPI.userId))")
+        }
     }
     
     class func track(event name: String, data: [String: Any]? = nil) {

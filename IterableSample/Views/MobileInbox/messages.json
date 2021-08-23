@@ -1,0 +1,90 @@
+{
+    "inAppMessages": [{
+            "createdAt": 1579277586000,
+            "saveToInbox": true,
+            "content": {
+                "contentType": "html",
+                "html": "<a href='iterable://dismiss'>Click Here1</a><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+            },
+            "trigger": {
+                "type": "never"
+            },
+            "messageId": "m9",
+            "campaignId": "c9",
+            "inboxMetadata": {
+                "title": "Buy Old Fashioned",
+                "subtitle": "Old Fashioned is on 10% off right now. Get 'em while they are hot!",
+                "icon": "oldfashioned",
+                "buttonText": "Buy Now"
+            },
+            "customPayload": {
+                "discount": "10%"
+            }
+        },
+        {
+            "createdAt": 1579377586000,
+            "saveToInbox": true,
+            "content": {
+                "contentType": "html",
+                "html": "<a href='iterable://dismiss'>Click Here2</a><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+            },
+            "trigger": {
+                "type": "never"
+            },
+            "messageId": "m10",
+            "campaignId": "c10",
+            "inboxMetadata": {
+                "title": "Register for Rewards",
+                "subtitle": "Register for rewards and get a free donut!.",
+                "icon": "sprinkles",
+                "buttonText": "Register"
+            },
+            "customPayload": {}
+
+        },
+        {
+            "createdAt": 1579477586000,
+            "saveToInbox": true,
+            "content": {
+                "contentType": "html",
+                "html": "<a href='iterable://dismiss'>Click Here3</a><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+            },
+            "trigger": {
+                "type": "never"
+            },
+            "messageId": "m11",
+            "campaignId": "c11",
+            "inboxMetadata": {
+                "title": "Like Apples?",
+                "subtitle": "How do you like them apple fritters? 25% off limited time only!",
+                "icon": "applefritter",
+                "buttonText": "Buy Now"
+            },
+            "customPayload": {
+                "discount": "25%"
+            }
+        },
+        {
+            "createdAt": 1579577586000,
+            "saveToInbox": true,
+            "content": {
+                "contentType": "html",
+                "html": "<a href='iterable://dismiss'>Click Here4</a><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+            },
+            "trigger": {
+                "type": "never"
+            },
+            "messageId": "m12",
+            "campaignId": "c12",
+            "inboxMetadata": {
+                "title": "BOGO!",
+                "subtitle": "Buy one get one half off - Original Glazed!",
+                "icon": "glazed",
+                "buttonText": "Buy Now"
+            },
+            "customPayload": {
+                "discount": "50%"
+            }
+        }
+    ]
+}

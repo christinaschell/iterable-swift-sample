@@ -37,11 +37,18 @@ struct DonutRowView: View {
                     .font(.caption)
             }
             Spacer()
-            Image(donut.image)
-                .resizable()
-                .frame(width: 40, height: 40, alignment: .center)
-                .modifier(CircleImageView(shadowRadius: 3, lineWidth: 1, color: .gray))
+            DonutIconImageView(image: donut.image)
         }
+    }
+}
+
+struct DonutIconImageView: View {
+    var image: String
+    var body: some View {
+        Image(image)
+            .resizable()
+            .frame(width: 40, height: 40, alignment: .center)
+            .modifier(CircleImageView(shadowRadius: 3, lineWidth: 1, color: .gray))
     }
 }
 
